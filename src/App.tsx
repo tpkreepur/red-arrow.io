@@ -1,17 +1,16 @@
-import { useState } from "react";
+// import { useState } from "react";
 import brandLogo from "./assets/brand/digital-rain.webp";
 import "./App.css";
 
 //import NavBar from './components/navbar.tsx';
 
 function App() {
-  const [count, setCount] = useState(0);
   return (
     <div className="App">
       <header>
         <h1>Welcome to Red-Arrow.io</h1>
       </header>
-      <main>
+      <main className="flex-container">
         <div className="logo">
           <img src={brandLogo} alt="brand logo" />
         </div>
