@@ -1,4 +1,0 @@
-
-User-agent: *
-Allow: /
-Sitemap: https://red-arrow.io/sitemap.xml
