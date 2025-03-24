@@ -10,21 +10,21 @@ export async function GET(req: Request) {
   }
 
   let author = {
-    name: 'Spencer Sharp',
-    email: 'spencer@planetaria.tech',
+    name: 'Justin Moore',
+    email: 'justin@red-arrow.io',
   }
 
   let feed = new Feed({
     title: author.name,
-    description: 'Your blog description',
+    description: 'The ramblings of a madman',
     author,
-    id: siteUrl,
-    link: siteUrl,
-    image: `${siteUrl}/favicon.ico`,
-    favicon: `${siteUrl}/favicon.ico`,
+    id: `${process.env.NEXT_PUBLIC_SITE_URL}`,
+    link: process.env.NEXT_PUBLIC_SITE_URL,
+    image: `${process.env.NEXT_PUBLIC_SITE_URL}/favicon.ico`,
+    favicon: `${process.env.NEXT_PUBLIC_SITE_URL}/favicon.ico`,
     copyright: `All rights reserved ${new Date().getFullYear()}`,
     feedLinks: {
-      rss2: `${siteUrl}/feed.xml`,
+      rss2: `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
     },
   })
 
@@ -39,7 +39,7 @@ export async function GET(req: Request) {
     let html = await (await fetch(url)).text()
     let $ = cheerio.load(html)
 
-    let publicUrl = `${siteUrl}/articles/${id}`
+    let publicUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/articles/${id}`
     let article = $('article').first()
     let title = article.find('h1').first().text()
     let date = article.find('time').first().attr('datetime')
@@ -63,7 +63,7 @@ export async function GET(req: Request) {
   return new Response(feed.rss2(), {
     status: 200,
     headers: {
-      'content-type': 'application/xml',
+      'content-type': 'text/xml',
       'cache-control': 's-maxage=31556952',
     },
   })
