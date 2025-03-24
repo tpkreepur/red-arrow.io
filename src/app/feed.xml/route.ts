@@ -3,11 +3,17 @@ import * as cheerio from 'cheerio'
 import { Feed } from 'feed'
 
 export async function GET(req: Request) {
-  let siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  // Determine site URL with fallback logic
+  let siteUrl = process.env.NEXT_PUBLIC_SITE_URL || ''
 
+  // If environment variable is not available, determine from request
   if (!siteUrl) {
-    throw Error('Missing NEXT_PUBLIC_SITE_URL environment variable')
+    const url = new URL(req.url)
+    siteUrl = `${url.protocol}//${url.host}`
   }
+
+  // Ensure trailing slashes are handled consistently
+  siteUrl = siteUrl.replace(/\/$/, '')
 
   let author = {
     name: 'Justin Moore',
@@ -18,13 +24,13 @@ export async function GET(req: Request) {
     title: author.name,
     description: 'The ramblings of a madman',
     author,
-    id: `${process.env.NEXT_PUBLIC_SITE_URL}`,
-    link: process.env.NEXT_PUBLIC_SITE_URL,
-    image: `${process.env.NEXT_PUBLIC_SITE_URL}/favicon.ico`,
-    favicon: `${process.env.NEXT_PUBLIC_SITE_URL}/favicon.ico`,
+    id: siteUrl,
+    link: siteUrl,
+    image: `${siteUrl}/favicon.ico`,
+    favicon: `${siteUrl}/favicon.ico`,
     copyright: `All rights reserved ${new Date().getFullYear()}`,
     feedLinks: {
-      rss2: `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
+      rss2: `${siteUrl}/feed.xml`,
     },
   })
 
@@ -39,7 +45,7 @@ export async function GET(req: Request) {
     let html = await (await fetch(url)).text()
     let $ = cheerio.load(html)
 
-    let publicUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/articles/${id}`
+    let publicUrl = `${siteUrl}/articles/${id}`
     let article = $('article').first()
     let title = article.find('h1').first().text()
     let date = article.find('time').first().attr('datetime')
