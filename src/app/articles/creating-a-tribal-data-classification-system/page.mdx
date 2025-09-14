@@ -1,21 +1,21 @@
-// app/articles/creating-a-tribal-data-classification-system/page.mdx
-import { ArticleLayout } from '@/components/ArticleLayout'
-import designSystem from './gros-ventre-warriors.jpg'
+import designSystem from "./gros-ventre-warriors.jpg";
 
 export const article = {
-  author: 'Justin Moore',
-  date: '2025-02-01',
-  title: 'A journey down the road of tribal data sovereignty',
+  author: "Justin Moore",
+  date: "2025-02-01",
+  title: "A journey down the road of tribal data sovereignty",
   description:
-    'Data soveriegnty as it relates to tribal knowledge and data classification.',
-}
+    "Data soveriegnty as it relates to tribal knowledge and data classification.",
+};
 
 export const metadata = {
   title: article.title,
   description: article.description,
-}
+};
 
-export default (props) => <ArticleLayout article={article} {...props} />
+export const dynamic = "force-static";
+
+export default (props) => <ArticleLayout article={article} {...props} />;
 
 In an ever expanding universe of data, the need for indigenous peoples to control their and govern their own data is paramount. In the Ft. Belknap Agency, near Harlem, Montana
 resides the Fort Belknap Indian Community, home to the Gros Ventre and Assiniboine tribes. It is here, where I was born and raised, that I first learned about our ceremonial practices.

@@ -1,28 +1,19 @@
-import assert from 'assert'
-import * as cheerio from 'cheerio'
-import { Feed } from 'feed'
+import { Feed } from "feed";
+import { getAllArticles } from "@/lib/articles";
 
-export async function GET(req: Request) {
-  // Determine site URL with fallback logic
-  let siteUrl = process.env.NEXT_PUBLIC_SITE_URL || ''
-
-  // If environment variable is not available, determine from request
-  if (!siteUrl) {
-    const url = new URL(req.url)
-    siteUrl = `${url.protocol}//${url.host}`
-  }
-
-  // Ensure trailing slashes are handled consistently
-  siteUrl = siteUrl.replace(/\/$/, '')
+export async function GET() {
+  // Use environment variable or fallback to base site URL for static export
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.red-arrow.io";
 
   let author = {
-    name: 'Justin Moore',
-    email: 'justin@red-arrow.io',
-  }
+    name: "Justin Moore",
+    email: "justin@red-arrow.io",
+  };
 
   let feed = new Feed({
     title: author.name,
-    description: 'The ramblings of a madman',
+    description: "The ramblings of a madman",
     author,
     id: siteUrl,
     link: siteUrl,
@@ -32,50 +23,31 @@ export async function GET(req: Request) {
     feedLinks: {
       rss2: `${siteUrl}/feed.xml`,
     },
-  })
+  });
 
-  // let articleIds = require
-  //   .context('../articles', true, /\/page\.mdx$/)
-  //   .keys()
-  //   .filter((key) => key.startsWith('./'))
-  //   .map((key) => key.slice(2).replace(/\/page\.mdx$/, ''))
+  // Get all articles from the articles system
+  let articles = await getAllArticles();
 
-  let articleIds = [
-    'creating-a-tribal-data-classification-system',
-    // Add other article IDs here
-  ]
-
-  for (let id of articleIds) {
-    let url = String(new URL(`/articles/${id}`, req.url))
-    let html = await (await fetch(url)).text()
-    let $ = cheerio.load(html)
-
-    let publicUrl = `${siteUrl}/articles/${id}`
-    let article = $('article').first()
-    let title = article.find('h1').first().text()
-    let date = article.find('time').first().attr('datetime')
-    let content = article.find('[data-mdx-content]').first().html()
-
-    assert(typeof title === 'string')
-    assert(typeof date === 'string')
-    assert(typeof content === 'string')
+  for (let article of articles) {
+    let url = `${siteUrl}/articles/${article.slug}`;
 
     feed.addItem({
-      title,
-      id: publicUrl,
-      link: publicUrl,
-      content,
+      title: article.title,
+      id: url,
+      link: url,
+      description: article.description,
+      content: article.description,
       author: [author],
       contributor: [author],
-      date: new Date(date),
-    })
+      date: new Date(article.date),
+    });
   }
 
   return new Response(feed.rss2(), {
     status: 200,
     headers: {
-      'content-type': 'text/xml',
-      'cache-control': 's-maxage=31556952',
+      "content-type": "application/xml",
+      "cache-control": "s-maxage=31536000",
     },
-  })
+  });
 }
