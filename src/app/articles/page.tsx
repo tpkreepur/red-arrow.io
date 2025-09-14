@@ -1,3 +1,4 @@
+// src/app/articles/page.tsx
 import { type Metadata } from 'next'
 
 import { Card } from '@/components/Card'

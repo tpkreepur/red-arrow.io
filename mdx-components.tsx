@@ -1,3 +1,4 @@
+// mdx-components.tsx
 import Image, { type ImageProps } from 'next/image'
 import { type MDXComponents } from 'mdx/types'
 

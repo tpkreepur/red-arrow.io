@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ".github/**/*.md",
+      "options": {
+        "parser": "ignore"
+      }
+    }
+  ]
+}
