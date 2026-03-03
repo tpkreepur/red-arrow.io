@@ -1,25 +1,16 @@
 // next.config.mjs
-import rehypePrism from '@mapbox/rehype-prism'
-import nextMDX from '@next/mdx'
-import remarkGfm from 'remark-gfm'
-
-const isProd = process.env.NODE_ENV === 'production'
+import rehypePrism from "@mapbox/rehype-prism";
+import nextMDX from "@next/mdx";
+import remarkGfm from "remark-gfm";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  assetPrefix: isProd ? '/red-arrow.io/' : '',
-  basePath: isProd ? '/red-arrow.io' : '',
+  output: "export",
   images: {
     unoptimized: true,
   },
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
-  experimental: {
-    outputFileTracingIncludes: {
-      '/articles/*': ['./src/app/articles/**/*.mdx'],
-    },
-  },
-}
+  pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
+};
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
@@ -27,6 +18,6 @@ const withMDX = nextMDX({
     remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypePrism],
   },
-})
+});
 
-export default withMDX(nextConfig)
+export default withMDX(nextConfig);

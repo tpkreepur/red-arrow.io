@@ -1,4 +1,4 @@
 
 User-agent: *
 Allow: /
-Sitemap: https://red-arrow.io/sitemap.xml
+Sitemap: https://www.red-arrow.io/sitemap.xml

@@ -1,80 +1,85 @@
 # red-arrow.io
 
-Personal portfolio and blog for Justin Moore, built with modern web technologies and a focus on performance and developer experience.
+Personal portfolio and blog for Justin Moore.
 
-## Project Overview
+## Overview
 
-*   **Type:** Next.js Static Website
-*   **Core Tech Stack:** Next.js 14 (App Router), React 18, Tailwind CSS 4, MDX, TypeScript.
-*   **Deployment:** Static export deployed to GitHub Pages via the `gh-pages` branch.
+- Framework: Next.js 16 App Router
+- Runtime: React 19 + TypeScript
+- Styling: Tailwind CSS v4 + `@tailwindcss/typography`
+- Content: MDX articles with `remark-gfm` and `rehype-prism`
+- Deployment: Static export (`output: 'export'`) to GitHub Pages
 
-## Getting Started
+## Requirements
 
-### Prerequisites
+- Node.js 20+
+- npm
 
-*   Node.js (latest LTS recommended)
-*   npm
+## Local development
 
-### Installation
+Install dependencies:
 
 ```bash
-npm install
+npm ci
 ```
 
-### Development Server
-
-Run the development server:
+Start the dev server:
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000>.
 
-### Building and Deployment
+## Commands
 
-*   **Production Build:** `npm run build`
-*   **Static Export:** `npm run export` (Generates a static site in the `out/` directory).
-*   **Deployment:** `npm run deploy` (Runs build, export, and pushes to GitHub Pages).
-*   **Linting:** `npm run lint`
+- `npm run dev` — start local development server
+- `npm run build` — create production static export in `out/`
+- `npm run typecheck` — run TypeScript checks (`tsc --noEmit`)
+- `npm run lint` — run ESLint
 
-## Project Structure
+## Deployment
 
-*   `src/app/`: Contains the application routes and layout.
-    *   `src/app/articles/`: MDX-based blog posts. Each article is a directory containing a `page.mdx`.
-    *   `src/app/layout.tsx`: Root layout with global providers and metadata.
-*   `src/components/`: Reusable React components (Button, Card, Container, etc.).
-*   `src/lib/`: Utility libraries, including `articles.ts` for dynamic fetching of MDX content.
-*   `src/styles/`: Global styles, including `tailwind.css` (Tailwind 4 configuration).
-*   `src/images/`: Static image assets and logos.
+Deployment is handled by `.github/workflows/static.yml`.
 
-## Development Conventions
+On push to `main`, the workflow:
 
-### Articles (MDX)
+1. Checks out the repo
+2. Sets up Node 20 with npm cache
+3. Runs `npm ci`
+4. Runs `npm run typecheck`
+5. Runs `npm run build` with `NEXT_PUBLIC_SITE_URL=https://www.red-arrow.io`
+6. Uploads `out/` and deploys to GitHub Pages
 
-Articles are stored in `src/app/articles/[slug]/page.mdx`. Each `page.mdx` file **must** export an `article` object containing metadata:
+The site targets the custom-domain root `https://www.red-arrow.io` (no repo subpath).
+
+## Content model (articles)
+
+Articles live in `src/app/articles/[slug]/page.mdx` and must export an `article`
+metadata object:
 
 ```typescript
 export const article = {
-  author: 'Justin Moore',
-  date: '2023-12-25',
-  title: 'Title of the Article',
-  description: 'A brief summary of the post.',
-}
+  title: "Article Title",
+  description: "Brief description",
+  author: "Justin Moore",
+  date: "2026-03-03",
+};
 ```
 
-### Styling
+The article index is built from `src/lib/articles.ts`, which discovers and sorts
+MDX files by date.
 
-*   Uses **Tailwind CSS 4** with the new CSS-first configuration found in `src/styles/tailwind.css`.
-*   Custom typography settings are defined in `typography.ts` and imported into the Tailwind CSS configuration.
-*   Supports light and dark modes via `next-themes`.
+## Project layout
 
-### Static Export
+- `src/app/` — routes, layouts, metadata, feed, sitemap
+- `src/components/` — shared UI components
+- `src/lib/` — shared utilities (`site.ts`, `articles.ts`, `formatDate.ts`)
+- `src/styles/` — Tailwind and Prism styles
+- `src/images/` — photos and logos
 
-The project is configured for static export in `next.config.mjs` (`output: 'export'`). Images are unoptimized to support static hosting environments like GitHub Pages.
+## Notes
 
-## Code Quality
-
-*   **TypeScript:** Strictly typed for better maintainability.
-*   **Linting:** ESLint with `eslint-config-next`.
-*   **Formatting:** Prettier with `prettier-plugin-tailwindcss` for consistent class ordering.
+- `src/lib/site.ts` centralizes canonical URL generation for metadata, feed,
+  sitemap, and robots output.
+- Images are unoptimized in `next.config.mjs` for static export compatibility.

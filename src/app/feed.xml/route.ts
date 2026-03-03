@@ -1,10 +1,12 @@
 import { Feed } from "feed";
+
 import { getAllArticles } from "@/lib/articles";
+import { getSiteUrl } from "@/lib/site";
+
+export const dynamic = "force-static";
 
 export async function GET() {
-  // Use environment variable or fallback to base site URL for static export
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.red-arrow.io";
+  const siteUrl = getSiteUrl();
 
   let author = {
     name: "Justin Moore",
@@ -25,7 +27,6 @@ export async function GET() {
     },
   });
 
-  // Get all articles from the articles system
   let articles = await getAllArticles();
 
   for (let article of articles) {

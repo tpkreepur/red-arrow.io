@@ -2,14 +2,14 @@
 
 ## Project Overview
 
-This is a personal portfolio website built with Next.js 14 using the App Router, configured for static export and GitHub Pages deployment. The site features MDX-based articles, dark/light theme support, and a clean, professional design built with Tailwind CSS.
+This is a personal portfolio website built with Next.js 16 using the App Router, configured for static export and GitHub Pages deployment. The site features MDX-based articles, dark/light theme support, and a clean, professional design built with Tailwind CSS.
 
 ## Architecture & Key Patterns
 
 ### Static Export Configuration
 
 - Site is configured for static export (`output: 'export'`) with GitHub Pages deployment
-- Production builds use `basePath: '/red-arrow.io'` and `assetPrefix` for proper GitHub Pages routing
+- Production builds target custom domain root (`https://www.red-arrow.io`) without a repository subpath basePath
 - Images are unoptimized (`images: { unoptimized: true }`) due to static export limitations
 
 ### MDX Article System
@@ -40,8 +40,8 @@ This is a personal portfolio website built with Next.js 14 using the App Router,
 ```bash
 npm run dev          # Start development server
 npm run build        # Build for production
-npm run export       # Generate static export
-npm run deploy       # Build, export, and deploy to GitHub Pages
+npm run typecheck    # Validate TypeScript
+npm run lint         # Run lint checks
 ```
 
 ### Adding New Articles
@@ -63,13 +63,18 @@ npm run deploy       # Build, export, and deploy to GitHub Pages
 
 - `src/app/providers.tsx` sets up `ThemeProvider` for dark/light mode
 - Theme state managed globally, affects all components
-- Custom color variables in `tailwind.config.ts` support theme switching
+- Custom color/theme variables are defined in `src/styles/tailwind.css`
 
 ### MDX Processing
 
 - `next.config.mjs` configures MDX with `remark-gfm` and `rehype-prism` for syntax highlighting
 - `mdx-components.tsx` provides custom component mappings for MDX content
 - Prism CSS styling in `src/styles/prism.css` for code blocks
+
+### Canonical URL Management
+
+- `src/lib/site.ts` is the single source of truth for site URL generation
+- Feed, sitemap, robots, and metadata rely on this shared helper
 
 ### Asset Management
 

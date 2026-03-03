@@ -1,29 +1,32 @@
-import { type Metadata } from 'next'
+import { type Metadata } from "next";
 
-import { Providers } from '@/app/providers'
-import { Layout } from '@/components/Layout'
+import { Providers } from "@/app/providers";
+import { Layout } from "@/components/Layout";
+import { getSiteUrl } from "@/lib/site";
 
-import '@/styles/tailwind.css'
+import "@/styles/tailwind.css";
+
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Justin Moore',
+    template: "%s - Justin Moore",
     default:
-      'Justin Moore - Software designer, cloud architect, founder, and amateur AI researcher',
+      "Justin Moore - Software designer, cloud architect, founder, and amateur AI researcher",
   },
   description:
-    'I’m Justin, a software designer and entrepreneur based in Southern California. I’m the founder and CEO of Red Arrow Solutions, where we develop technologies that empower regular people and small businesses on their own terms.',
+    "I’m Justin, a software designer and entrepreneur based in Southern California. I’m the founder and CEO of Red Arrow Solutions, where we develop technologies that empower regular people and small businesses on their own terms.",
   alternates: {
     types: {
-      'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
+      "application/rss+xml": `${siteUrl}/feed.xml`,
     },
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
@@ -35,5 +38,5 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-  )
+  );
 }

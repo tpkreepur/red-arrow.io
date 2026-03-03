@@ -37,6 +37,8 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
       - name: Build
         run: npm run build
         env:
@@ -44,7 +46,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           # Upload out folder (Next.js static export output)
           path: "./out"
