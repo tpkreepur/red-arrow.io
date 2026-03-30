@@ -31,7 +31,7 @@
 
 ## Content conventions
 
-- Articles live under `src/app/articles/[slug]/` as `content.mdx` plus a `page.tsx` wrapper.
+- Articles live under `src/app/articles/[slug]/` as `content.mdx` plus a `page.tsx` server route wrapper.
 - `content.mdx` exports `article` metadata (`title`, `description`, `author`, `date`).
 - `src/lib/articles.ts` discovers and sorts articles via `fast-glob`.
 

@@ -14,7 +14,7 @@ This is a personal portfolio website built with Next.js 16 using the App Router,
 
 ### MDX Article System
 
-- Articles live in `src/app/articles/[slug]/content.mdx` with a `page.tsx` route wrapper
+- Articles live in `src/app/articles/[slug]/content.mdx` with a `page.tsx` server route wrapper
 - Each article exports an `article` object from `content.mdx` with metadata (title, description, author, date)
 - Articles use `ArticleLayout` component for consistent styling and navigation
 - `src/lib/articles.ts` dynamically imports and sorts articles by date using `fast-glob`

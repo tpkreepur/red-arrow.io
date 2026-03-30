@@ -8,7 +8,7 @@ React 19, TypeScript, Tailwind CSS v4, and MDX.
 Core characteristics:
 
 - Static export build (`output: 'export'`) with GitHub Pages deployment
-- MDX article system under `src/app/articles/*/content.mdx` with a `page.tsx` wrapper
+- MDX article system under `src/app/articles/*/content.mdx` with a `page.tsx` server route wrapper
 - Light/dark theme support via `next-themes`
 - RSS (`/feed.xml`) and sitemap (`/sitemap.xml`) generated from shared site metadata
 
