@@ -1,36 +1,31 @@
-import { type Metadata } from 'next'
-import Image from 'next/image'
+import { type Metadata } from "next";
+import Image from "next/image";
 
-import { Card } from '@/components/Card'
-import { SimpleLayout } from '@/components/SimpleLayout'
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoGithub from '@/images/logos/github.svg'
-import logoInfuzik from '@/images/logos/infuzik.svg'
+import { Card } from "@/components/Card";
+import { SimpleLayout } from "@/components/SimpleLayout";
+import logoGithub from "@/images/logos/github.svg";
+import logoInfuzik from "@/images/logos/infuzik.svg";
 
 const projects = [
   {
-    name: 'Infuzik',
+    name: "Infuzik",
     description:
-      'A brain entrainment app that uses binaural beats and isochronic tones to help you focus, relax, or sleep.',
-    link: { href: 'https://www.infuzik.com', label: 'infuzik.com' },
+      "A brain entrainment app that uses binaural beats and isochronic tones to help you focus, relax, or sleep.",
+    link: { href: "https://www.infuzik.com", label: "infuzik.com" },
     logo: logoInfuzik,
   },
   {
-    name: 'PiBenchmark',
-    description: 'A benchmarking tool for Raspberry Pi clusters.',
+    name: "PiBenchmark",
+    description: "A benchmarking tool for Raspberry Pi clusters.",
     link: {
-      href: 'https://github.com/tpkreepur/PiBenchmark',
-      label: 'github.com/tpkreepur/PiBenchmark',
+      href: "https://github.com/tpkreepur/PiBenchmark",
+      label: "github.com/tpkreepur/PiBenchmark",
     },
     logo: logoGithub,
   },
-]
+];
 
-function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function LinkIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
@@ -38,13 +33,13 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'Things I’ve made trying to put my dent in the universe.',
-}
+  title: "Projects",
+  description: "Things I’ve made trying to put my dent in the universe.",
+};
 
 export default function Projects() {
   return (
@@ -78,5 +73,5 @@ export default function Projects() {
         ))}
       </ul>
     </SimpleLayout>
-  )
+  );
 }
