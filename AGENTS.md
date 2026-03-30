@@ -8,7 +8,7 @@ React 19, TypeScript, Tailwind CSS v4, and MDX.
 Core characteristics:
 
 - Static export build (`output: 'export'`) with GitHub Pages deployment
-- MDX article system under `src/app/articles/*/page.mdx`
+- MDX article system under `src/app/articles/*/content.mdx` with a `page.tsx` wrapper
 - Light/dark theme support via `next-themes`
 - RSS (`/feed.xml`) and sitemap (`/sitemap.xml`) generated from shared site metadata
 
@@ -39,7 +39,9 @@ npm run build
 
 ## Article Conventions
 
-Each article file (`src/app/articles/[slug]/page.mdx`) must export:
+Each article must be structured as:
+
+- `src/app/articles/[slug]/content.mdx` exporting:
 
 ```mdx
 export const article = {
@@ -49,6 +51,8 @@ export const article = {
   date: '2026-03-03',
 }
 ```
+
+- `src/app/articles/[slug]/page.tsx` that imports `content.mdx`, exports `metadata`, and renders `ArticleLayout`.
 
 Articles are automatically discovered and sorted newest-first by date.
 
@@ -61,7 +65,7 @@ Articles are automatically discovered and sorted newest-first by date.
 
 ## File and Import Patterns
 
-- Pages: `page.tsx` or `page.mdx`
+- Pages: `page.tsx` (use `content.mdx` for article content)
 - Components: `PascalCase` files with named exports
 - Utilities: `camelCase` files in `src/lib/`
 - Use `@/` import alias for `src/`

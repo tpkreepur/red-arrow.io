@@ -55,8 +55,12 @@ The site targets the custom-domain root `https://www.red-arrow.io` (no repo subp
 
 ## Content model (articles)
 
-Articles live in `src/app/articles/[slug]/page.mdx` and must export an `article`
-metadata object:
+Each article lives in `src/app/articles/[slug]/` and uses:
+
+- `content.mdx` for article body content plus `article` metadata export
+- `page.tsx` as a server wrapper for route metadata and `ArticleLayout`
+
+`content.mdx` must export an `article` metadata object:
 
 ```typescript
 export const article = {

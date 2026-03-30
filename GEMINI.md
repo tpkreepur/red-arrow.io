@@ -31,8 +31,8 @@
 
 ## Content conventions
 
-- Articles live at `src/app/articles/[slug]/page.mdx`.
-- Each article exports `article` metadata (`title`, `description`, `author`, `date`).
+- Articles live under `src/app/articles/[slug]/` as `content.mdx` plus a `page.tsx` wrapper.
+- `content.mdx` exports `article` metadata (`title`, `description`, `author`, `date`).
 - `src/lib/articles.ts` discovers and sorts articles via `fast-glob`.
 
 ## Configuration notes

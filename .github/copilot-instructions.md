@@ -14,8 +14,8 @@ This is a personal portfolio website built with Next.js 16 using the App Router,
 
 ### MDX Article System
 
-- Articles live in `src/app/articles/[slug]/page.mdx` following Next.js App Router conventions
-- Each article exports an `article` object with metadata (title, description, author, date)
+- Articles live in `src/app/articles/[slug]/content.mdx` with a `page.tsx` route wrapper
+- Each article exports an `article` object from `content.mdx` with metadata (title, description, author, date)
 - Articles use `ArticleLayout` component for consistent styling and navigation
 - `src/lib/articles.ts` dynamically imports and sorts articles by date using `fast-glob`
 
@@ -47,9 +47,10 @@ npm run lint         # Run lint checks
 ### Adding New Articles
 
 1. Create directory: `src/app/articles/[slug]/`
-2. Add `page.mdx` with required `article` export object
-3. Include images in the same directory
-4. Articles auto-appear on `/articles` page via dynamic import system
+2. Add `content.mdx` with required `article` export object and article body
+3. Add `page.tsx` that imports `content.mdx`, exports `metadata`, and renders `ArticleLayout`
+4. Include images in the same directory
+5. Articles auto-appear on `/articles` page via dynamic import system
 
 ### RSS Feed Generation
 
@@ -86,7 +87,7 @@ npm run lint         # Run lint checks
 
 ### File Naming
 
-- Page files: `page.tsx` or `page.mdx` (Next.js App Router convention)
+- Route files: `page.tsx` (use `content.mdx` for article content)
 - Components: PascalCase files with named exports (`ArticleLayout.tsx`)
 - Utilities: camelCase files in `src/lib/` (`formatDate.ts`, `articles.ts`)
 
