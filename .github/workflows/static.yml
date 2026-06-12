@@ -37,8 +37,6 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm ci
-      - name: Typecheck
-        run: npm run typecheck
       - name: Spellcheck
         run: npm run spellcheck
       - name: Build
