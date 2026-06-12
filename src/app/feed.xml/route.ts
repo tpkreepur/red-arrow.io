@@ -9,8 +9,8 @@ export async function GET() {
   const siteUrl = getSiteUrl();
 
   let author = {
-    name: "Justin Moore",
-    email: "justin@red-arrow.io",
+    name: "Justin",
+    email: "info@red-arrow.io",
   };
 
   let feed = new Feed({
