@@ -8,7 +8,8 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "spellcheck": "cspell \"src/**/*.{md,mdx,ts,tsx}\""
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
@@ -37,6 +38,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
+    "cspell": "^10.0.1",
     "eslint": "^9.21.0",
     "eslint-config-next": "^16.1.6",
     "prettier": "^3.3.2",

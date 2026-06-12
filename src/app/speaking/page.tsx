@@ -1,8 +1,8 @@
-import { type Metadata } from 'next'
+import { type Metadata } from "next";
 
-import { Card } from '@/components/Card'
-import { Section } from '@/components/Section'
-import { SimpleLayout } from '@/components/SimpleLayout'
+import { Card } from "@/components/Card";
+import { Section } from "@/components/Section";
+import { SimpleLayout } from "@/components/SimpleLayout";
 
 function SpeakingSection({
   children,
@@ -12,7 +12,7 @@ function SpeakingSection({
     <Section {...props}>
       <div className="space-y-16">{children}</div>
     </Section>
-  )
+  );
 }
 
 function Appearance({
@@ -22,11 +22,11 @@ function Appearance({
   cta,
   href,
 }: {
-  title: string
-  description: string
-  event: string
-  cta: string
-  href: string
+  title: string;
+  description: string;
+  event: string;
+  cta: string;
+  href: string;
 }) {
   return (
     <Card as="article">
@@ -37,13 +37,13 @@ function Appearance({
       <Card.Description>{description}</Card.Description>
       <Card.Cta>{cta}</Card.Cta>
     </Card>
-  )
+  );
 }
 
 export const metadata: Metadata = {
-  title: 'Speaking',
-  description: 'I’ve spoken at a few events here and there.',
-}
+  title: "Speaking",
+  description: "I’ve spoken at a few events here and there.",
+};
 
 export default function Speaking() {
   return (
@@ -62,7 +62,7 @@ export default function Speaking() {
           />
           <Appearance
             href="#"
-            title="Rasbperry Pi Performance Benchmarking: An exploration in supercomputing and parallel computing benchmarks"
+            title="Raspberry Pi Performance Benchmarking: An exploration in supercomputing and parallel computing benchmarks"
             description="Leveraging MPI, OpenMP, and the Raspberry Pi to explore the performance of a cluster of Raspberry Pis compared to the Yellowstone supercomputer."
             event="NCAR Extern Presentation Series 2014"
             cta="Watch video"
@@ -70,5 +70,5 @@ export default function Speaking() {
         </SpeakingSection>
       </div>
     </SimpleLayout>
-  )
+  );
 }
