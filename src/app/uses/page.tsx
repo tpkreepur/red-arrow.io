@@ -60,7 +60,7 @@ export default function Uses() {
             more powerful than my workstation. I went with an AMD Ryzen 7 8700F,
             96GB of RAM, 2TB of NVMe storage and GeForce RTX 3090 with 24GB of
             VRAM. It’s a monster and can handle everything from
-            Deepseek-R1&apos;s advanced reasoning model to running a mutli-agent
+            Deepseek-R1&apos;s advanced reasoning model to running a multi-agent
             ReAct system with multiple LLMs all at once. It’s a dream machine
             for AI development.
           </Tool>

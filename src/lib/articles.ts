@@ -1,6 +1,6 @@
 import glob from 'fast-glob'
 
-interface Article {
+export interface Article {
   title: string
   description: string
   author: string
@@ -20,13 +20,13 @@ async function importArticle(
   }
 
   return {
-    slug: articleFilename.replace(/(\/page)?\.mdx$/, ''),
+    slug: articleFilename.replace(/(\/content)?\.mdx$/, ''),
     ...article,
   }
 }
 
 export async function getAllArticles() {
-  let articleFilenames = await glob('*/page.mdx', {
+  let articleFilenames = await glob('*/content.mdx', {
     cwd: './src/app/articles',
   })
 

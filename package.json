@@ -2,12 +2,14 @@
   "name": "red-arrow.io",
   "version": "1.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "spellcheck": "cspell \"src/**/*.{md,mdx,ts,tsx}\""
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
@@ -31,6 +33,7 @@
     "@types/node": "^20.19.43",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "cspell": "^10.0.1",
     "eslint": "^9.21.0",
     "eslint-config-next": "^16.4.2",
     "prettier": "^3.9.10",

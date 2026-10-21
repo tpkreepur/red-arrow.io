@@ -9,8 +9,8 @@ export async function GET() {
   const siteUrl = getSiteUrl()
 
   let author = {
-    name: 'Justin Moore',
-    email: 'justin@red-arrow.io',
+    name: 'Justin',
+    email: 'info@red-arrow.io',
   }
 
   let feed = new Feed({
@@ -48,6 +48,7 @@ export async function GET() {
     status: 200,
     headers: {
       'content-type': 'application/xml',
+      'cache-control': 's-maxage=31536000',
     },
   })
 }

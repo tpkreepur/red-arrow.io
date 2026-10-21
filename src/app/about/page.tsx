@@ -50,7 +50,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'I’m Spencer Sharp. I live in New York City, where I design the future.',
+    'I&apos;m Spencer Sharp. I live in New York City, where I design the future.',
 }
 
 export default function About() {
@@ -69,19 +69,19 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            I’m Justin Moore. I live in Southern California, where I design
+            I&apos;m Justin Moore. I live in Southern California, where I design
             solutions for the future.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              I’ve loved learning about computers and electronics since I was a
-              child. I remember taking apart my mom&apos;s old VHS player when I
-              was 6, just to see how it worked. I spent hours tinkering with the
-              circuit boards and wires, fascinated by the intricate components
-              inside. I was so enthralled that I didn&apos;t even notice when my
-              mom walked in and caught me red-handed. Even after a stern
-              talking-to, I couldn&apos;t shake the feeling of excitement that
-              came from understanding how things worked.
+              I&apos;ve loved learning about computers and electronics since I
+              was a child. I remember taking apart my mom&apos;s old VHS player
+              when I was 6, just to see how it worked. I spent hours tinkering
+              with the circuit boards and wires, fascinated by the intricate
+              components inside. I was so enthralled that I didn&apos;t even
+              notice when my mom walked in and caught me red-handed. Even after
+              a stern talking-to, I couldn&apos;t shake the feeling of
+              excitement that came from understanding how things worked.
             </p>
             <p>
               It was only after numerous electronics I murdered through out my
@@ -96,23 +96,23 @@ export default function About() {
               wanted.
             </p>
             <p>
-              Fast forward to today, and I’ve spent the last 20 years working in
-              tech, from building websites to designing complex systems for
-              Fortune 500 companies. I’ve worked with some of the brightest
-              minds in the industry and have been fortunate enough to lead teams
-              that have created innovative solutions to real-world problems. I’m
-              passionate about using technology to empower people and make their
-              lives easier.
+              Fast forward to today, and I&apos;ve spent the last 20 years
+              working in tech, from building websites to designing complex
+              systems for Fortune 500 companies. I&apos;ve worked with some of
+              the brightest minds in the industry and have been fortunate enough
+              to lead teams that have created innovative solutions to real-world
+              problems. I&apos;m passionate about using technology to empower
+              people and make their lives easier.
             </p>
             <p>
-              When I’m not working, you can find me spending time with my
+              When I&apos;m not working, you can find me spending time with my
               family, annoying my dogs, creating smart home devices from
-              scratch, or tinkering with the latest AI models. I’m always
-              looking for new ways to push the boundaries of what’s possible
-              with technology, and I love sharing my knowledge with others. I
-              believe that technology should be accessible to everyone, and I’m
-              committed to helping others learn and grow in this ever-changing
-              field.
+              scratch, or tinkering with the latest AI models. I&apos;m always
+              looking for new ways to push the boundaries of what&apos;s
+              possible with technology, and I love sharing my knowledge with
+              others. I believe that technology should be accessible to
+              everyone, and I&apos;m committed to helping others learn and grow
+              in this ever-changing field.
             </p>
           </div>
         </div>

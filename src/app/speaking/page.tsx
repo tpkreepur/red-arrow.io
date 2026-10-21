@@ -62,7 +62,7 @@ export default function Speaking() {
           />
           <Appearance
             href="#"
-            title="Rasbperry Pi Performance Benchmarking: An exploration in supercomputing and parallel computing benchmarks"
+            title="Raspberry Pi Performance Benchmarking: An exploration in supercomputing and parallel computing benchmarks"
             description="Leveraging MPI, OpenMP, and the Raspberry Pi to explore the performance of a cluster of Raspberry Pis compared to the Yellowstone supercomputer."
             event="NCAR Extern Presentation Series 2014"
             cta="Watch video"
