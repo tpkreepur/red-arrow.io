@@ -7,7 +7,7 @@ Personal portfolio and blog for Justin Moore.
 - Framework: Next.js 16 App Router
 - Runtime: React 19 + TypeScript
 - Styling: Tailwind CSS v4 + `@tailwindcss/typography`
-- Content: MDX articles with `remark-gfm` and `rehype-prism`
+- Content: MDX articles with `remark-gfm`
 - Deployment: Static export (`output: 'export'`) to GitHub Pages
 
 ## Requirements

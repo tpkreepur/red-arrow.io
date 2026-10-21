@@ -14,7 +14,6 @@ const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: ['remark-gfm'],
-    rehypePlugins: ['@mapbox/rehype-prism'],
   },
 })
 
