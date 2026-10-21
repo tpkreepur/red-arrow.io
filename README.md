@@ -12,7 +12,7 @@ Personal portfolio and blog for Justin Moore.
 
 ## Requirements
 
-- Node.js 20+
+- Node.js 22+
 - npm
 
 ## Local development
@@ -45,7 +45,7 @@ Deployment is handled by `.github/workflows/static.yml`.
 On push to `main`, the workflow:
 
 1. Checks out the repo
-2. Sets up Node 20 with npm cache
+2. Sets up Node 22 with npm cache
 3. Runs `npm ci`
 4. Runs `npm run typecheck`
 5. Runs `npm run build` with `NEXT_PUBLIC_SITE_URL=https://www.red-arrow.io`
@@ -60,11 +60,11 @@ metadata object:
 
 ```typescript
 export const article = {
-  title: "Article Title",
-  description: "Brief description",
-  author: "Justin Moore",
-  date: "2026-03-03",
-};
+  title: 'Article Title',
+  description: 'Brief description',
+  author: 'Justin Moore',
+  date: '2026-03-03',
+}
 ```
 
 The article index is built from `src/lib/articles.ts`, which discovers and sorts
